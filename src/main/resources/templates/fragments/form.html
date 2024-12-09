@@ -1,0 +1,14 @@
+<div th:fragment="content">
+  <h2>Add Product</h2>
+  <form th:action="@{/saveProduct}" method="post" th:object="${product}" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:value="${product.name}">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+    <label for="price">Price:</label>
+    <input type="number" step="0.01" id="price" name="price" th:value="${product.price}">
+    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
